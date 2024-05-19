@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
+const drawingRoute = require('./routes/drawings');
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // Route Middleware
 app.use('/api/user', authRoute);
+app.use('/api/drawings', drawingRoute);
 
 // Connect to DB
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
